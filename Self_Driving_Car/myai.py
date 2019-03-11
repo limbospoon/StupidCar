@@ -22,3 +22,10 @@ class Network(nn.Module):
         self.fc1 = nn.Linear(input_size, 30)
         self.fc2 = nn.Linear(30, nb_action)
 
+    def forward(self, state):
+        #Hidden nuerons
+        x = func.relu(self.fc1(state))
+        
+        #Output neurons
+        q_values = self.fc2(x)
+        return q_values
