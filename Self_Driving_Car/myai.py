@@ -29,3 +29,12 @@ class Network(nn.Module):
         #Output neurons
         q_values = self.fc2(x)
         return q_values
+    
+#Implenting experience replay
+class ReplayMemory(object):
+    
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.memory = []
+        
+        
