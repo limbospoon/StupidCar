@@ -96,6 +96,17 @@ class Dqn():
         torch.save({'state_dict': self.model.state_dict(),
                     'optimizer': self.optimizer.state_dict,
                     }, 'last_brain.pth')
+    
+    def load(self):
+        if os.path.isfile('last_brain.pth'):
+            print("Loading brain...")
+            checkpoint = torch.load('last_brain.pth')
+            self.model.load_state_dict(checkpoint['state_dict'])
+            self.optimizer.load_state_dict(checkpoint['optimizer'])
+            print("done!")
+        else:
+            print("No brain found")
+                
         
         
         
