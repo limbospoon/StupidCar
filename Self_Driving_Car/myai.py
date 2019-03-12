@@ -46,3 +46,25 @@ class ReplayMemory(object):
         #Reshape list
         samples = zip(*random.sample(self.memory, batch_size))
         return map(lambda x: Variable(torch.cat(x, 0)), samples)
+    
+#Implementing Deep Q learning model
+class Dqn():
+    def __init__(self, input_size, nb_action, gamma):
+        self.gamma = gamma
+        self.reward_window = []
+        self.model = Network(input_size, nb_action)
+        self.memory = ReplayMemory(100000)
+        self.optimizer = opt.Adam(self.model.parameters(), lr = 0.01)
+        self.last_state = torch.tensor(input_size).unsqueeze(0)
+        self.last_action = 0
+        self.last_reward = 0
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
