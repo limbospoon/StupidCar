@@ -74,6 +74,10 @@ class Dqn():
         td_loss.backward(retain_variables = True)
         self.optimizer.step()
         
+    def update(self, new_reward, new_signal):
+        new_state = torch.tensor(new_signal).float().unsqueeze(0)
+        self.memory.push(self.last_state, new_state, torch.LongTensor(int[self.last_action]), torch.tensor([self.last_reward]))
+        
         
         
         
